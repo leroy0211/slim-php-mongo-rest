@@ -41,9 +41,9 @@ function mongoList($server, $db, $collection, $select = null) {
     
     // add regex match filters if they exist
     
-    if(isset($select['wildcard']) && count($select['wildcard'])) {
-      foreach($select['wildcard'] as $key => $value) {
-        $criteria[$key] = new MongoRegex($value);
+    if(isset($select['regex']) && count($select['regex'])) {
+      foreach($select['regex'] as $key => $value) {
+        $criteria[$key] = new MongoRegex("/" .$value. "/i");
       }
     }
     
